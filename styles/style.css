@@ -1,0 +1,179 @@
+body {
+  background-color: white;
+}
+
+.body-title {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.container {
+  /* outline: red solid 10px; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 100px;
+}
+
+.pokemon {
+  height: 150px;
+  /* outline: blue solid 3px; */
+}
+
+.charizard {
+  position: absolute;
+  left: 90px;
+  top: 34%;
+  z-index: 1000;
+}
+
+.blastoise {
+  position: absolute;
+  right: 90px;
+  top: 34%;
+}
+
+#hpborder {
+  height: 30px;
+  min-width: 250px;
+  margin-top: 0;
+  border: black solid 2px;
+}
+
+.hp-charizard {
+  height: 30px;
+  background-color: green;
+  width: 250px;
+  margin-top: 0;
+  /* visibility: hidden; */
+}
+
+.hp-blastoise {
+  height: 30px;
+  background-color: green;
+  width: 250px;
+  margin-top: 0;
+  /* visibility: hidden; */
+}
+
+.hp-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* outline: red solid 2px; */
+  margin-bottom: 0;
+  line-height: 0;
+}
+
+.hp-2 {
+  padding-right: 200px;
+  /* visibility: hidden; */
+}
+/* .hp-1 {
+  visibility: hidden;
+} */
+
+.hp-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.btn-container1 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  margin-top: 75px;
+  /* outline: red solid 3px; */
+  position: absolute;
+  left: 50px;
+  top: 50%;
+  width: 250px;
+  /* visibility: hidden; */
+}
+
+.btn-container2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  margin-top: 75px;
+  /* outline: red solid 3px; */
+  position: absolute;
+  top: 50%;
+  right: 50px;
+  width: 250px;
+  /* visibility: hidden; */
+}
+
+.battle-text {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 200px;
+  flex-wrap: nowrap;
+  /* border: black solid 5px; */
+  justify-content: center;
+}
+.attack-stats {
+  display: none;
+  border: black solid 5px;
+  width: 700px;
+  justify-content: center;
+  align-items: center;
+}
+
+.attack-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.ice-beam {
+  color: blue;
+  visibility: visible;
+}
+.hydro-pump {
+  color: blue;
+  visibility: visible;
+}
+.hydro-cannon {
+  color:blue;
+  visibility: visible;
+}
+.water-gun {
+  color:blue;
+  visibility: visible;
+}
+.fire-ball {
+  color: red;
+  visibility: visible;
+}
+.flamethrower {
+  color: red;
+  visibility: visible;
+}
+.overheat {
+  color: red;
+  visibility: visible;
+}
+.dragon-claw {
+  color: red;
+  visibility: visible;
+}
+
+
+.fire-img {
+  height: 100px;
+  width: 150px;
+  margin-left: -775px;
+  visibility: hidden;
+
+}
+
+.water-img {
+  height: 100px;
+  width: 150px;
+  margin-left: 1775px;
+  visibility: hidden;
+}
