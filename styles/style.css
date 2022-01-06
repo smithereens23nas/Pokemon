@@ -5,6 +5,14 @@ body {
 .body-title {
   text-align: center;
   margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.body-title h1{
+  margin-top: 20px;
+  margin: 0 10px;
 }
 
 .container {
@@ -13,7 +21,6 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 100px;
 }
 
 .pokemon {
@@ -110,9 +117,11 @@ body {
   text-align: center;
   display: flex;
   flex-direction: column;
-  margin-top: 200px;
+  /* margin-top: -500px; */
   flex-wrap: nowrap;
   /* border: black solid 5px; */
+  /* outline: purple solid 3px; */
+
   justify-content: center;
 }
 .attack-stats {
@@ -127,7 +136,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 .ice-beam {
   color: blue;
@@ -138,16 +146,17 @@ body {
   visibility: visible;
 }
 .hydro-cannon {
-  color:blue;
+  color: blue;
   visibility: visible;
 }
 .water-gun {
-  color:blue;
+  color: blue;
   visibility: visible;
 }
 .fire-ball {
   color: red;
   visibility: visible;
+
 }
 .flamethrower {
   color: red;
@@ -162,18 +171,124 @@ body {
   visibility: visible;
 }
 
-
 .fire-img {
   height: 100px;
   width: 150px;
-  margin-left: -775px;
+  margin-left: -1400px;
+  margin-top: 100px;
   visibility: hidden;
-
+  /* z-index: 1000; */
+  /* outline: blue solid 100px; */
 }
 
 .water-img {
   height: 100px;
   width: 150px;
+  z-index: 1000;
+  margin-top: -500px;
+  margin-bottom: 25px;
   margin-left: 1775px;
   visibility: hidden;
+}
+
+.start-btn {
+  margin: 0 auto;
+  width: 100px;
+  visibility: hidden;
+}
+
+.player-btns {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: -175px;
+  align-items: center;
+  width: 250px;
+  height: 200px;
+  border: black solid 4px;
+  background: linear-gradient(
+    90deg,
+    rgba(36, 0, 0, 1) 0%,
+    rgba(255, 19, 0, 1) 0%,
+    rgba(0, 212, 255, 1) 77%
+  );
+}
+.single-btn {
+  width: 100px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.multi-btn {
+  width: 100px;
+  margin: 0 auto;
+  display: block;
+}
+
+.btn-container {
+  /* outline: green solid 4px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  min-height: 200px;
+}
+
+.charizard-btn {
+  margin: 0 auto;
+  width: 100px;
+  display: none;
+  color: red;
+  margin-top: -20px;
+}
+
+.blastoise-btn {
+  margin: 0 auto;
+  width: 100px;
+  display: none;
+  margin-top: 15px;
+  color: blue;
+
+}
+
+.pokemon-choose {
+  display: none;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  text-align: center;
+  /* outline: red solid 10px; */
+  width: 200px;
+  /* padding-bottom: 25px; */
+}
+
+.pokemon-container {
+  display: flex;
+  flex-direction: column;
+  /* outline: green solid 4px; */
+  margin-top: -175px;
+}
+
+.battle-details {
+  visibility: hidden;
+}
+
+button {
+  border-radius: 50px;
+  height: 30px;
+}
+
+.pokemon-ball {
+  height: 50px;
+  width: 50px;
+
+}
+
+.blast-span {
+  color: blue;
+}
+
+.char-span {
+  color: red;
 }
