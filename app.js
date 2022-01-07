@@ -38,7 +38,7 @@ function charizardAnimationAtk() {
 
 //Animation that sends the water img from the left to the right of the screen and hidding the water attack from Charizard
 function blastoiseAnimationAtk() {
-  if (($(".water-img")[0].style.marginLeft = "1575px")) {
+  if (($(".water-img")[0].style.marginLeft = "1775px")) {
     fireAttack.style.visibility = "hidden";
     waterAttack.style.visibility = "visible";
 
@@ -66,13 +66,24 @@ function fireBallAtk() {
     let blastoiseHPBarWidth = (blastoiseHP / 100) * 250;
     blastHP.style.width = blastoiseHPBarWidth + "px";
   } else {
-    attackStats.innerHTML = "You missed!";
+    attackStats.innerHTML = "Charizard missed!";
     attackStats.style.display = "flex";
   }
   if (blastoiseHP === 0) {
     attackStats.innerHTML = "Blastoise has fainted. You have won the battle!";
     hideButtons();
     charizardAnimationAtk();
+    PlayAgainTimer();
+  }
+  if (
+    iceBeam.style.visibility === "hidden" &&
+    waterGun.style.visibility === "hidden" &&
+    hydroCannon.style.visibility === "hidden" &&
+    hydroPump.style.visibility === "hidden" &&
+    blastoiseHP != 0
+  ) {
+    cpuBlastoiseTimer();
+    clearBlastoiseTimer();
   }
 }
 
@@ -95,13 +106,24 @@ function dragonClawAtk() {
     let blastoiseHPBarWidth = (blastoiseHP / 100) * 250;
     blastHP.style.width = blastoiseHPBarWidth + "px";
   } else {
-    attackStats.innerHTML = "You missed!";
+    attackStats.innerHTML = "Charizard missed!";
     attackStats.style.display = "flex";
   }
   if (blastoiseHP === 0) {
     attackStats.innerHTML = "Blastoise has fainted. You have won the battle!";
     hideButtons();
     charizardAnimationAtk();
+    PlayAgainTimer();
+  }
+  if (
+    iceBeam.style.visibility === "hidden" &&
+    waterGun.style.visibility === "hidden" &&
+    hydroCannon.style.visibility === "hidden" &&
+    hydroPump.style.visibility === "hidden" &&
+    blastoiseHP != 0
+  ) {
+    cpuBlastoiseTimer();
+    clearBlastoiseTimer();
   }
 }
 
@@ -124,13 +146,25 @@ function overheatAtk() {
     let blastoiseHPBarWidth = (blastoiseHP / 100) * 250;
     blastHP.style.width = blastoiseHPBarWidth + "px";
   } else {
-    attackStats.innerHTML = "You missed!";
+    attackStats.innerHTML = "Charizard missed!";
     attackStats.style.display = "flex";
   }
   if (blastoiseHP === 0) {
     attackStats.innerHTML = "Blastoise has fainted. You have won the battle!";
     hideButtons();
     charizardAnimationAtk();
+    PlayAgainTimer();
+  }
+  //If single player is selected and buttons are hidden then we want a cpu response, if multiplayer is clicked we do not.
+  if (
+    iceBeam.style.visibility === "hidden" &&
+    waterGun.style.visibility === "hidden" &&
+    hydroCannon.style.visibility === "hidden" &&
+    hydroPump.style.visibility === "hidden" &&
+    blastoiseHP != 0
+  ) {
+    cpuBlastoiseTimer();
+    clearBlastoiseTimer();
   }
 }
 
@@ -153,13 +187,25 @@ function flamethrowerAtk() {
     let blastoiseHPBarWidth = (blastoiseHP / 100) * 250;
     blastHP.style.width = blastoiseHPBarWidth + "px";
   } else {
-    attackStats.innerHTML = "You missed!";
+    attackStats.innerHTML = "Charizard missed!";
     attackStats.style.display = "flex";
   }
   if (blastoiseHP === 0) {
     attackStats.innerHTML = "Blastoise has fainted. You have won the battle!";
     hideButtons();
     charizardAnimationAtk();
+    PlayAgainTimer();
+  }
+  //If single player is selected and buttons are hidden then we want a cpu response, if multiplayer is clicked we do not.
+  if (
+    iceBeam.style.visibility === "hidden" &&
+    waterGun.style.visibility === "hidden" &&
+    hydroCannon.style.visibility === "hidden" &&
+    hydroPump.style.visibility === "hidden" &&
+    blastoiseHP != 0
+  ) {
+    cpuBlastoiseTimer();
+    clearBlastoiseTimer();
   }
 }
 
@@ -172,10 +218,10 @@ waterGun.addEventListener("click", waterGunAtk);
 //Blastoise Attacks
 function iceBeamAtk() {
   let hitChance = Math.floor(Math.random() * 11);
-  console.log(hitChance);
+  // console.log(hitChance);
   if (hitChance <= 5) {
     let dmg = Math.floor(Math.random() * 26) + 25;
-    console.log(dmg);
+    // console.log(dmg);
     blastoiseAnimationAtk();
     charizardHP -= dmg;
     // console.log(blastoiseHP)
@@ -188,23 +234,36 @@ function iceBeamAtk() {
     let charizardHPBarWidth = (charizardHP / 100) * 250;
     charHP.style.width = charizardHPBarWidth + "px";
   } else {
-    attackStats.innerHTML = "You missed!";
+    attackStats.innerHTML = "Blastoise missed!";
     attackStats.style.display = "flex";
   }
   if (charizardHP === 0) {
     attackStats.innerHTML = "Charizard has fainted. You have won the battle!";
     hideButtons();
-
     blastoiseAnimationAtk();
+    PlayAgainTimer();
+  }
+  //If single player is selected and buttons are hidden then we want a cpu response, if multiplayer is clicked we do not.
+  if (
+    fireBall.style.visibility === "hidden" &&
+    flamethrower.style.visibility === "hidden" &&
+    dragonClaw.style.visibility === "hidden" &&
+    overheat.style.visibility === "hidden" &&
+    charizardHP != 0
+  ) {
+    //cpu attacks with a random atk in 3 seconds
+    cpuCharizardTimer();
+    //cpu timer is cleared so it is not repeated
+    clearCharizardTimer();
   }
 }
 
 function waterGunAtk() {
   let hitChance = Math.floor(Math.random() * 11);
-  console.log(hitChance);
+  // console.log(hitChance);
   if (hitChance <= 9) {
     let dmg = Math.floor(Math.random() * 6) + 15;
-    console.log(dmg);
+    // console.log(dmg);
     blastoiseAnimationAtk();
 
     charizardHP -= dmg;
@@ -218,14 +277,27 @@ function waterGunAtk() {
     let charizardHPBarWidth = (charizardHP / 100) * 250;
     charHP.style.width = charizardHPBarWidth + "px";
   } else {
-    attackStats.innerHTML = "You missed!";
+    attackStats.innerHTML = "Blastoise missed!";
     attackStats.style.display = "flex";
   }
   if (charizardHP === 0) {
     attackStats.innerHTML = "Charizard has fainted. You have won the battle!";
     hideButtons();
-
     blastoiseAnimationAtk();
+    PlayAgainTimer();
+  }
+  //If single player is selected and buttons are hidden then we want a cpu response, if multiplayer is clicked we do not.
+  if (
+    fireBall.style.visibility === "hidden" &&
+    flamethrower.style.visibility === "hidden" &&
+    dragonClaw.style.visibility === "hidden" &&
+    overheat.style.visibility === "hidden" &&
+    charizardHP != 0
+  ) {
+    //cpu attacks with a random atk in 3 seconds
+    cpuCharizardTimer();
+    //cpu timer is cleared so it is not repeated
+    clearCharizardTimer();
   }
 }
 
@@ -246,7 +318,7 @@ function hydroCannonAtk() {
     let charizardHPBarWidth = (charizardHP / 100) * 250;
     charHP.style.width = charizardHPBarWidth + "px";
   } else {
-    attackStats.innerHTML = "You missed!";
+    attackStats.innerHTML = "Blastoise missed!";
     attackStats.style.display = "flex";
   }
   if (charizardHP === 0) {
@@ -254,6 +326,20 @@ function hydroCannonAtk() {
     hideButtons();
 
     blastoiseAnimationAtk();
+    PlayAgainTimer();
+  }
+  //If single player is selected and buttons are hidden then we want a cpu response, if multiplayer is clicked we do not.
+  if (
+    fireBall.style.visibility === "hidden" &&
+    flamethrower.style.visibility === "hidden" &&
+    dragonClaw.style.visibility === "hidden" &&
+    overheat.style.visibility === "hidden" &&
+    charizardHP != 0
+  ) {
+    //cpu attacks with a random atk in 3 seconds
+    cpuCharizardTimer();
+    //cpu timer is cleared so it is not repeated
+    clearCharizardTimer();
   }
 }
 
@@ -274,13 +360,27 @@ function hydroPumpAtk() {
     let charizardHPBarWidth = (charizardHP / 100) * 250;
     charHP.style.width = charizardHPBarWidth + "px";
   } else {
-    attackStats.innerHTML = "You missed!";
+    attackStats.innerHTML = "Blastoise missed!";
     attackStats.style.display = "flex";
   }
   if (charizardHP === 0) {
     attackStats.innerHTML = "Charizard has fainted. You have won the battle!";
     hideButtons();
     blastoiseAnimationAtk();
+    PlayAgainTimer();
+  }
+  //If single player is selected and buttons are hidden then we want a cpu response, if multiplayer is clicked we do not.
+  if (
+    fireBall.style.visibility === "hidden" &&
+    flamethrower.style.visibility === "hidden" &&
+    dragonClaw.style.visibility === "hidden" &&
+    overheat.style.visibility === "hidden" &&
+    charizardHP != 0
+  ) {
+    //cpu attacks with a random atk in 3 seconds
+    cpuCharizardTimer();
+    //cpu timer is cleared so it is not repeated
+    clearCharizardTimer();
   }
 }
 
@@ -373,6 +473,12 @@ function charizardIsChosen() {
     playerButtons.style.display = "none";
     battleText.style.marginTop = "250px";
     battleDetails.style.visibility = "visible";
+    battleDetails.innerHTML =
+      "You are " +
+      "<span class='char-span'>Charizard</span>" +
+      " facing off against " +
+      "<span class='blast-span'>Blastoise</span>" +
+      ".";
   });
 }
 charizardIsChosen();
@@ -390,12 +496,326 @@ function blastoiseIsChosen() {
     playerButtons.style.display = "none";
     battleText.style.marginTop = "250px";
     battleDetails.style.visibility = "visible";
-battleDetails.innerHTML = "You are " + "<span class='blast-span'>Blastoise</span>" + " facing off against " + "<span class='char-span'>Charizard</span>" + "."
+    battleDetails.innerHTML =
+      "You are " +
+      "<span class='blast-span'>Blastoise</span>" +
+      " facing off against " +
+      "<span class='char-span'>Charizard</span>" +
+      ".";
   });
 }
 blastoiseIsChosen();
 
 //function that has a random attack response after player 1 attacks, alternating turns
 
+function cpuBlastoiseAtk() {
+  let randomAttack = Math.floor(Math.random() * 4);
+  // console.log(randomAttack);
+  if (blastoiseHP > 0) {
+    if (randomAttack === 0) {
+      //call attack function
+      cpuIceBeamAtk();
+    } else if (randomAttack === 1) {
+      cpuWaterGunAtk();
+    } else if (randomAttack === 2) {
+      cpuHydroCannonAtk();
+    } else if (randomAttack === 3) {
+      cpuHydroPumpAtk();
+    }
+  }
+}
 
+function cpuCharizardAtk() {
+  let randomAttack = Math.floor(Math.random() * 4);
+  console.log(randomAttack);
+  if (charizardHP > 0) {
+    if (randomAttack === 0) {
+      //call attack function
+      cpuFireBallAtk();
+    } else if (randomAttack === 1) {
+      cpuDragonClawAtk();
+    } else if (randomAttack === 2) {
+      cpuOverheatAtk();
+    } else if (randomAttack === 3) {
+      cpuFlamethrowerAtk();
+    }
+  }
+}
+
+function cpuBlastoiseTimer() {
+  let timer = setTimeout(cpuBlastoiseAtk, 2300);
+}
+
+function clearBlastoiseTimer() {
+  clearTimeout(cpuBlastoiseTimer);
+}
+
+function cpuCharizardTimer() {
+  let timer = setTimeout(cpuCharizardAtk, 2300);
+}
+
+function clearCharizardTimer() {
+  clearTimeout(cpuCharizardTimer);
+}
+
+//Blastoise Attacks
+function cpuIceBeamAtk() {
+  let hitChance = Math.floor(Math.random() * 11);
+  // console.log(hitChance);
+  if (hitChance <= 5) {
+    let dmg = Math.floor(Math.random() * 26) + 25;
+    // console.log(dmg);
+    blastoiseAnimationAtk();
+    charizardHP -= dmg;
+    // console.log(blastoiseHP)
+    if (charizardHP < 0) {
+      charizardHP = 0;
+    }
+    attackStats.innerHTML = `Blastoise used Ice Beam, doing ${dmg} damage. Charizard now has ${charizardHP}HP.`;
+    attackStats.style.display = "flex";
+
+    let charizardHPBarWidth = (charizardHP / 100) * 250;
+    charHP.style.width = charizardHPBarWidth + "px";
+  } else {
+    attackStats.innerHTML = "Blastoise missed!";
+    attackStats.style.display = "flex";
+  }
+  if (charizardHP === 0) {
+    attackStats.innerHTML = "Charizard has fainted. You have lost the battle!";
+    hideButtons();
+
+    blastoiseAnimationAtk();
+    PlayAgainTimer();
+  }
+}
+
+function cpuWaterGunAtk() {
+  let hitChance = Math.floor(Math.random() * 11);
+  // console.log(hitChance);
+  if (hitChance <= 9) {
+    let dmg = Math.floor(Math.random() * 6) + 15;
+    // console.log(dmg);
+    blastoiseAnimationAtk();
+
+    charizardHP -= dmg;
+    // console.log(blastoiseHP)
+    if (charizardHP < 0) {
+      charizardHP = 0;
+    }
+    attackStats.innerHTML = `Blastoise used Water Gun, doing ${dmg} damage. Charizard now has ${charizardHP}HP.`;
+    attackStats.style.display = "flex";
+
+    let charizardHPBarWidth = (charizardHP / 100) * 250;
+    charHP.style.width = charizardHPBarWidth + "px";
+  } else {
+    attackStats.innerHTML = "Blastoise missed!";
+    attackStats.style.display = "flex";
+  }
+  if (charizardHP === 0) {
+    attackStats.innerHTML = "Charizard has fainted. You have lost the battle!";
+    hideButtons();
+
+    blastoiseAnimationAtk();
+    PlayAgainTimer();
+  }
+}
+
+function cpuHydroCannonAtk() {
+  let hitChance = Math.floor(Math.random() * 11);
+  console.log(hitChance);
+  if (hitChance <= 7) {
+    let dmg = Math.floor(Math.random() * 6) + 30;
+    console.log(dmg);
+    blastoiseAnimationAtk();
+    charizardHP -= dmg;
+    // console.log(blastoiseHP)
+    if (charizardHP < 0) {
+      charizardHP = 0;
+    }
+    attackStats.innerHTML = `Blastoise used Hydro Cannon, doing ${dmg} damage. Charizard now has ${charizardHP}HP.`;
+    attackStats.style.display = "flex";
+    let charizardHPBarWidth = (charizardHP / 100) * 250;
+    charHP.style.width = charizardHPBarWidth + "px";
+  } else {
+    attackStats.innerHTML = "Blastoise missed!";
+    attackStats.style.display = "flex";
+  }
+  if (charizardHP === 0) {
+    attackStats.innerHTML = "Charizard has fainted. You have lost the battle!";
+    hideButtons();
+
+    blastoiseAnimationAtk();
+    PlayAgainTimer();
+  }
+}
+
+function cpuHydroPumpAtk() {
+  let hitChance = Math.floor(Math.random() * 11);
+  console.log(hitChance);
+  if (hitChance <= 8) {
+    let dmg = Math.floor(Math.random() * 11) + 20;
+    console.log(dmg);
+    blastoiseAnimationAtk();
+    charizardHP -= dmg;
+    // console.log(blastoiseHP)
+    if (charizardHP < 0) {
+      charizardHP = 0;
+    }
+    attackStats.innerHTML = `Blastoise used Hydro Pump, doing ${dmg} damage. Charizard now has ${charizardHP}HP.`;
+    attackStats.style.display = "flex";
+    let charizardHPBarWidth = (charizardHP / 100) * 250;
+    charHP.style.width = charizardHPBarWidth + "px";
+  } else {
+    attackStats.innerHTML = "Blastoise missed!";
+    attackStats.style.display = "flex";
+  }
+  if (charizardHP === 0) {
+    attackStats.innerHTML = "Charizard has fainted. You have lost the battle!";
+    hideButtons();
+    blastoiseAnimationAtk();
+    PlayAgainTimer();
+  }
+}
+
+//Charizard Attacks
+function cpuFireBallAtk() {
+  let hitChance = Math.floor(Math.random() * 11);
+  console.log(hitChance);
+  if (hitChance <= 5) {
+    let dmg = Math.floor(Math.random() * 26) + 25;
+    console.log(dmg);
+    charizardAnimationAtk();
+    blastoiseHP -= dmg;
+    // console.log(blastoiseHP)
+    if (blastoiseHP < 0) {
+      blastoiseHP = 0;
+    }
+    attackStats.innerHTML = `Charizard used Fire Ball, doing ${dmg} damage. Blastoise now has ${blastoiseHP}HP.`;
+    attackStats.style.display = "flex";
+    let blastoiseHPBarWidth = (blastoiseHP / 100) * 250;
+    blastHP.style.width = blastoiseHPBarWidth + "px";
+  } else {
+    attackStats.innerHTML = "Charizard missed!";
+    attackStats.style.display = "flex";
+  }
+  if (blastoiseHP === 0) {
+    attackStats.innerHTML = "Blastoise has fainted. You have lost the battle!";
+    hideButtons();
+    charizardAnimationAtk();
+    PlayAgainTimer();
+  }
+}
+
+function cpuDragonClawAtk() {
+  let hitChance = Math.floor(Math.random() * 11);
+  console.log(hitChance);
+  if (hitChance <= 8) {
+    let dmg = Math.floor(Math.random() * 11) + 20;
+    console.log(dmg);
+    charizardAnimationAtk();
+
+    blastoiseHP -= dmg;
+    // console.log(blastoiseHP)
+    if (blastoiseHP < 0) {
+      blastoiseHP = 0;
+    }
+    attackStats.innerHTML = `Charizard used Dragon Claw, doing ${dmg} damage. Blastoise now has ${blastoiseHP}HP.`;
+    attackStats.style.display = "flex";
+
+    let blastoiseHPBarWidth = (blastoiseHP / 100) * 250;
+    blastHP.style.width = blastoiseHPBarWidth + "px";
+  } else {
+    attackStats.innerHTML = "Charizard missed!";
+    attackStats.style.display = "flex";
+  }
+  if (blastoiseHP === 0) {
+    attackStats.innerHTML = "Blastoise has fainted. You have lost the battle!";
+    hideButtons();
+    charizardAnimationAtk();
+    PlayAgainTimer();
+  }
+}
+
+function cpuOverheatAtk() {
+  let hitChance = Math.floor(Math.random() * 11);
+  console.log(hitChance);
+  if (hitChance <= 9) {
+    let dmg = Math.floor(Math.random() * 6) + 15;
+    console.log(dmg);
+    charizardAnimationAtk();
+
+    blastoiseHP -= dmg;
+    // console.log(blastoiseHP)
+    if (blastoiseHP < 0) {
+      blastoiseHP = 0;
+    }
+    attackStats.innerHTML = `Charizard used Overheat, doing ${dmg} damage. Blastoise now has ${blastoiseHP}HP.`;
+    attackStats.style.display = "flex";
+
+    let blastoiseHPBarWidth = (blastoiseHP / 100) * 250;
+    blastHP.style.width = blastoiseHPBarWidth + "px";
+  } else {
+    attackStats.innerHTML = "Charizard missed!";
+    attackStats.style.display = "flex";
+  }
+  if (blastoiseHP === 0) {
+    attackStats.innerHTML = "Blastoise has fainted. You have lost the battle!";
+    hideButtons();
+    charizardAnimationAtk();
+    PlayAgainTimer();
+  }
+}
+
+function cpuFlamethrowerAtk() {
+  let hitChance = Math.floor(Math.random() * 11);
+  console.log(hitChance);
+  if (hitChance <= 7) {
+    let dmg = Math.floor(Math.random() * 6) + 30;
+    console.log(dmg);
+    charizardAnimationAtk();
+
+    blastoiseHP -= dmg;
+    // console.log(blastoiseHP)
+    if (blastoiseHP < 0) {
+      blastoiseHP = 0;
+    }
+    attackStats.innerHTML = `Charizard used Flamethrower, doing ${dmg} damage. Blastoise now has ${blastoiseHP}HP.`;
+    attackStats.style.display = "flex";
+
+    let blastoiseHPBarWidth = (blastoiseHP / 100) * 250;
+    blastHP.style.width = blastoiseHPBarWidth + "px";
+  } else {
+    attackStats.innerHTML = "Charizard missed!";
+    attackStats.style.display = "flex";
+  }
+  if (blastoiseHP === 0) {
+    attackStats.innerHTML = "Blastoise has fainted. You have lost the battle!";
+    hideButtons();
+    charizardAnimationAtk();
+    PlayAgainTimer();
+  }
+}
+let playAgainBtn = document.querySelector(".play-again");
+playAgainBtn.addEventListener("click", playAgain);
 //reset game function
+function playAgain() {
+  multiplayer.style.display = "flex";
+  singlePlayer.style.display = "flex";
+  playerButtons.style.display = "flex";
+  blastHP.style.width = "250px";
+  charHP.style.width = "250px";
+  attackStats.innerHTML = "";
+  blastoiseHP = 100;
+  charizardHP = 100;
+  playAgainBtn.style.display = "none";
+  attackStats.style.display = "none";
+  buttonContainer.style.display = "flex";
+}
+
+function PlayAgainTimer() {
+  setTimeout(displayPlayAgainBtn, 1000);
+}
+
+function displayPlayAgainBtn() {
+  playAgainBtn.style.display = "flex";
+}
