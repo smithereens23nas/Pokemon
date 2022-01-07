@@ -44,7 +44,7 @@ function blastoiseAnimationAtk() {
 
     $(".water-img").animate({ marginLeft: "-3475px" }, 1500);
   } else {
-    $(".water-img")[0].style.marginLeft = "775px";
+    $(".water-img")[0].style.marginLeft = "1775px";
   }
 }
 
