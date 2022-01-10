@@ -33,8 +33,6 @@ function charizardAnimationAtk() {
     $(".fire-img")[0].style.marginLeft = "-1400px";
   }
 }
-// let test = document.querySelector('.water-img')
-// test.style.visibility = "hidden";
 
 //Animation that sends the water img from the left to the right of the screen and hidding the water attack from Charizard
 function blastoiseAnimationAtk() {
@@ -50,38 +48,50 @@ function blastoiseAnimationAtk() {
 
 //Charizard Attacks
 function fireBallAtk() {
+  //gets a random number 
   let hitChance = Math.floor(Math.random() * 11);
-  console.log(hitChance);
+  //chance of hitting the target (60%)
   if (hitChance <= 5) {
+    //damage range 
     let dmg = Math.floor(Math.random() * 26) + 25;
-    console.log(dmg);
+    //calling the animation for the attack
     charizardAnimationAtk();
+    //subtracted the Health of blastoise from the damage
     blastoiseHP -= dmg;
-    // console.log(blastoiseHP)
+    //if the health bar is at 0 or negative set it to 0
     if (blastoiseHP < 0) {
       blastoiseHP = 0;
     }
+    //displaying and adding text to the page
     attackStats.innerHTML = `You hit Blastoise with your Fire Ball, doing ${dmg} damage. Blastoise now has ${blastoiseHP}HP.`;
     attackStats.style.display = "flex";
+    //get a decimal/percentage and multiplying it by the width of the health bar
     let blastoiseHPBarWidth = (blastoiseHP / 100) * 250;
     blastHP.style.width = blastoiseHPBarWidth + "px";
   } else {
+    //displaying a message on the page if the attack misses
     attackStats.innerHTML = "Charizard missed!";
     attackStats.style.display = "flex";
   }
+  //if Blastoise's HP reaches 0 display message and hide the buttons
+  //animate the attack and display play again button
   if (blastoiseHP === 0) {
     attackStats.innerHTML = "Blastoise has fainted. You have won the battle!";
     hideButtons();
     charizardAnimationAtk();
     PlayAgainTimer();
   }
+  //if Blastoise's buttons are hidden from the beginning of the game then we know this is the cpu playing
+  //
   if (
     iceBeam.style.visibility === "hidden" &&
     waterGun.style.visibility === "hidden" &&
     hydroCannon.style.visibility === "hidden" &&
     hydroPump.style.visibility === "hidden" &&
+    //if his HP is not 0 then send a random cpu attack
     blastoiseHP != 0
   ) {
+    //sets a timer for a 2 second delay on the random cpu attack
     cpuBlastoiseTimer();
     clearBlastoiseTimer();
   }
@@ -447,7 +457,6 @@ function multiplayerOption() {
     singlePlayer.style.display = "none";
     playerButtons.style.display = "none";
     battleText.style.marginTop = "250px";
-    battleDetails.style.visibility = "visible";
     fireBall.style.visibility = "visible";
     flamethrower.style.visibility = "visible";
     dragonClaw.style.visibility = "visible";
